@@ -12,23 +12,21 @@ var courses = [
     }
 ]
 
-
-
 Array.prototype.myFilter = function(cb){
-    var output = []
-    for (var index in this){
+    let output = []
+    for(let index in this){
         if(this.hasOwnProperty(index)){
             var result = cb(this[index])
-            output.push(result)
+            if(result){
+                output.push(this[index])
+            }
         }
-
     }
     return output
 }
 
-var htmls = courses.myFilter(function(course){
-    course.point > 500
-    return course
+var final = courses.myFilter((course) => {
+    return course.point > 500
 })
 
-console.log(htmls)
+console.log(final)
